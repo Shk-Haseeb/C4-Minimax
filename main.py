@@ -1,9 +1,20 @@
 from board import Connect4Board, PLAYER, AI
 from ai_agent import minimax
 from bayes_model import PlayerModel
+from narrator import explain_move
+
+#You can adjust the verbosity of the AI's explanations
+# Options: "short", "medium", "long"
+NARRATION_LEVEL = "medium"
+
 
 
 def main():
+
+    with open("logs/ai_log.txt", "w") as log_file:
+        log_file.write("📝 AI Move Log\n")
+        log_file.write("====================\n")
+        
     board = Connect4Board()
     model = PlayerModel()
     current_player = PLAYER
@@ -32,6 +43,11 @@ def main():
         else:
             print("AI is thinking...")
             move, _ = minimax(board, depth=4, alpha=float('-inf'), beta=float('inf'), maximizing_player=True, model=model)
+            explaination = explain_move(move, board, model, verbosity=NARRATION_LEVEL)
+            print(f"AI chose column {move}. {explaination}")
+
+            with open("data/ai_move_log.txt", "a") as log_file:
+                log_file.write(f"AI played column {move}. {explaination}\n")
 
         board.make_move(move, current_player)
         board.print_board()
@@ -43,6 +59,7 @@ def main():
         current_player = AI if current_player == PLAYER else PLAYER
 
     print("🤝 Game over — It's a draw!")
+
 
 if __name__ == "__main__":
     main()
