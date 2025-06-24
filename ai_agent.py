@@ -18,7 +18,7 @@ def evaluate_window(window, player):
 
     return score
 
-def evaluate_board(board_obj, player):
+def evaluate_board(board_obj, player, model=None):
     score = 0
     grid = board_obj.grid
 
@@ -47,10 +47,15 @@ def evaluate_board(board_obj, player):
         for col in range(COLUMNS - 3):
             window = [grid[row-i][col+i] for i in range(4)]
             score += evaluate_window(window, player)
+    
+    if model and player == AI:
+        predicted_col = model.most_likely_column()
+        if predicted_col in board_obj.valid_moves():
+            score += 25
 
     return score
 
-def minimax(board_obj, depth, alpha, beta, maximizing_player):
+def minimax(board_obj, depth, alpha, beta, maximizing_player, model=None):
     valid_cols = board_obj.valid_moves()
 
     is_terminal = board_obj.check_winner(PLAYER) or board_obj.check_winner(AI) or board_obj.is_full()
@@ -60,7 +65,7 @@ def minimax(board_obj, depth, alpha, beta, maximizing_player):
         elif board_obj.check_winner(PLAYER):
             return (None, -1000000)
         else:
-            return (None, evaluate_board(board_obj, AI))
+            return (None, evaluate_board(board_obj, AI, model))
 
     if maximizing_player:
         value = float('-inf')
@@ -68,7 +73,7 @@ def minimax(board_obj, depth, alpha, beta, maximizing_player):
         for col in valid_cols:
             temp_board = copy_board(board_obj)
             temp_board.make_move(col, AI)
-            _, score = minimax(temp_board, depth - 1, alpha, beta, False)
+            _, score = minimax(temp_board, depth - 1, alpha, beta, False, model)
             if score > value:
                 value = score
                 best_col = col
@@ -82,7 +87,7 @@ def minimax(board_obj, depth, alpha, beta, maximizing_player):
         for col in valid_cols:
             temp_board = copy_board(board_obj)
             temp_board.make_move(col, PLAYER)
-            _, score = minimax(temp_board, depth - 1, alpha, beta, True)
+            _, score = minimax(temp_board, depth - 1, alpha, beta, True, model)
             if score < value:
                 value = score
                 best_col = col
