@@ -25,4 +25,4 @@ This project was built to reinforce foundational AI concepts by implementing an 
 - AI fundamentals (search, heuristics, decision-making)
 - Modular code organization and logging
 
-![Game Screenshot](screenshots/gui_demo.png)
+![Game Screenshot](screenshots/gui-demo.png)
