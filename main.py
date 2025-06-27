@@ -11,7 +11,7 @@ NARRATION_LEVEL = "medium"
 
 def main():
 
-    with open("logs/ai_log.txt", "w") as log_file:
+    with open("data/ai_log.txt", "w") as log_file:
         log_file.write("📝 AI Move Log\n")
         log_file.write("====================\n")
         
@@ -59,6 +59,8 @@ def main():
         current_player = AI if current_player == PLAYER else PLAYER
 
     print("🤝 Game over — It's a draw!")
+
+    #print("Press Ctrl+C to quit at any time.\n")
 
 
 if __name__ == "__main__":

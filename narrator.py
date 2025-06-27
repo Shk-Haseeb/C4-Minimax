@@ -1,3 +1,9 @@
+"""
+Narrator module: This module explains the AI's decisions in natural language.
+It uses templates, player behavior modeling, and game context to generate messages.
+"""
+
+
 import random
 from board import PLAYER, AI
 
@@ -7,8 +13,8 @@ def explain_move(move, board_obj, model=None, verbosity="medium"):
     center_col = len(board_obj.grid[0]) // 2
     if move == center_col:
         explanation.append(random.choice([
-            "I prefer the center column — it's strategic.",
-            "The center gives me more control.",
+            "I prefer the center column. It's strategic.",
+            "The center gives me more conrol.",
             "I like playing the center early on."
         ]))
 
@@ -36,7 +42,7 @@ def explain_move(move, board_obj, model=None, verbosity="medium"):
         explanation.append(random.choice([
             f"Column {move} looked good.",
             f"I liked the setup from that spot.",
-            f"Just building pressure with that move."
+            f"Just building pressure for you :) with that move."
         ]))
 
     if verbosity == "short":
