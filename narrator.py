@@ -39,10 +39,9 @@ def explain_move(move, board_obj, model=None, verbosity="medium"):
             f"Just building pressure with that move."
         ]))
 
-    # 🔊 Verbosity filtering
     if verbosity == "short":
         return explanation[0]
     elif verbosity == "long":
         return " Here's more: " + " ".join(explanation)
-    else:  # medium
+    else:  
         return " ".join(explanation[:2]) if len(explanation) > 1 else explanation[0]
