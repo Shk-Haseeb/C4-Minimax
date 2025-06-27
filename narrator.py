@@ -6,6 +6,7 @@ It uses templates, player behavior modeling, and game context to generate messag
 
 import random
 from board import PLAYER, AI
+from utils import copy_board
 
 def explain_move(move, board_obj, model=None, verbosity="medium"):
     explanation = []

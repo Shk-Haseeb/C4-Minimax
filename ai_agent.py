@@ -1,6 +1,7 @@
 
 import random
 from board import ROWS, COLUMNS, EMPTY, PLAYER, AI
+from utils import copy_board
 
 def evaluate_window(window, player):
     score = 0
@@ -95,12 +96,3 @@ def minimax(board_obj, depth, alpha, beta, maximizing_player, model=None):
             if alpha >= beta:
                 break
         return best_col, value
-
-
-def copy_board(board_obj):
-    from board import Connect4Board
-    new_board = Connect4Board()
-    for r in range(ROWS):
-        for c in range(COLUMNS):
-            new_board.grid[r][c] = board_obj.grid[r][c]
-    return new_board
