@@ -1,4 +1,4 @@
-# Connect 4 AI (Minimax + Bayesian + Narration)
+## Connect 4 AI (Minimax + Bayesian + Narration)
 
 This project was built to reinforce foundational AI concepts by implementing an intelligent agent that plays Connect 4 against a human. The goal was to apply classic algorithms from an Intro to AI course and integrate them into a functional, user-facing application. For GUI, I went with the classic Tkinter interface.
 
