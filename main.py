@@ -3,7 +3,7 @@ from ai_agent import minimax
 from bayes_model import PlayerModel
 from narrator import explain_move
 
-#You can adjust the verbosity of the AI's explanations
+#You can adjust the verbosity of the AI's explanations. Look at the options below:
 # Options: "short", "medium", "long"
 NARRATION_LEVEL = "medium"
 
