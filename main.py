@@ -19,7 +19,7 @@ def main():
     model = PlayerModel()
     current_player = PLAYER
 
-    print("🎮 Welcome to Connect 4!")
+    print("Welcome to Connect 4!")
     board.print_board()
 
     while not board.is_full():
