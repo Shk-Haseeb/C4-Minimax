@@ -12,7 +12,7 @@ NARRATION_LEVEL = "medium"
 def main():
 
     with open("data/ai_log.txt", "w") as log_file:
-        log_file.write("📝 AI Move Log\n")
+        log_file.write(" AI Move Log\n")
         log_file.write("====================\n")
         
     board = Connect4Board()
@@ -29,7 +29,7 @@ def main():
             try:
                 move = int(input("Enter column number (0–6): "))
             except ValueError:
-                print("⚠️ Invalid input. Please enter a number between 0 and 6.")
+                print("Invalid input. Please enter a number between 0 and 6.")
                 continue
 
             if move not in board.valid_moves():
@@ -38,7 +38,7 @@ def main():
 
             model.record_move(move)
 
-            print(f"🤖 Prediction: Player favors column {model.most_likely_column()}")
+            print(f"Prediction: Player favors column {model.most_likely_column()}")
 
         else:
             print("AI is thinking...")
@@ -53,14 +53,12 @@ def main():
         board.print_board()
 
         if board.check_winner(current_player):
-            print(f"\n🏆 {'Player (X)' if current_player == PLAYER else 'AI (O)'} wins!")
+            print(f"\n {'Player (X)' if current_player == PLAYER else 'AI (O)'} wins!")
             return
 
         current_player = AI if current_player == PLAYER else PLAYER
 
-    print("🤝 Game over — It's a draw!")
-
-    #print("Press Ctrl+C to quit at any time.\n")
+    print("Game over! It's a draw!")
 
 
 if __name__ == "__main__":
