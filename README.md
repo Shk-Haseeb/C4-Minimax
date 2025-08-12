@@ -18,10 +18,7 @@ This project was built to reinforce foundational AI concepts by implementing an 
 - Explainable AI (interpretable move explanations)
 - Basic UI development with Tkinter
 
-### Skills & Tools Used
 
-- Python (data structures, OOP, Tkinter)
-- Algorithms: Minimax, alpha-beta pruning, Bayes
-- AI fundamentals (search, heuristics, decision-making)
 
 ![Game Screenshot](screenshots/gui-demo.png)
+
